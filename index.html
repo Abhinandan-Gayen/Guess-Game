@@ -63,11 +63,17 @@
             font-size: 15px; 
             border: none;
         }
+        .text{
+            padding: 1% 5% 1% 5%;
+        }
         @media screen and (max-width: 480px) {
             .size{
                 width: 95vw;
-                height: 75vh;
+                height: 70vh;
                 margin-top: 30%;
+            }
+            .text{
+                padding: 0;
             }
         }
         @media screen and (max-width: 768px){
@@ -85,7 +91,7 @@
             <button class="reload" onclick="reload()" style="margin: auto; margin-top: 10%; display: block; height: 90px; width: 90px; border-radius: 8px; background: url(https://cdn-icons-png.flaticon.com/512/9729/9729098.png); background-size: cover; border: none;" ></button>
         </div>
         <h1 style="display: block; text-align: center; border-bottom: 2px solid black; padding: 2%;">Guess The Number Game</h1>
-        <div style="display: flex; justify-content: space-around; padding: 1%; margin-top: 2%; margin-bottom: 2%">
+        <div class="text" style="display: flex; justify-content: space-between; margin-top: 2%; margin-bottom: 2%">
             <p style="display: inline-block; font-size: 25px;">Your Guess</p>
             <p style="display: inline-block; font-size: 25px;">Computer Guess</p>
         </div>
@@ -93,7 +99,7 @@
             <input id="invalue" class="input1" type="text" style="height: 8%; width: 45%;margin: auto; outline: none; font-size: 30px;text-align: center; border-top-right-radius: 15px; border-bottom-left-radius: 15px;" placeholder="Write Number 1-10">
             <p id="ShowMe" style="background-color: white; height: 35px; width: 45%;margin: auto; outline: none; font-size: 30px;text-align: center;border-top-right-radius: 15px; border-bottom-left-radius: 15px; border: 2px solid black;"></p>
         </div>
-        <div class="" style="display: grid; height: 35%; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; grid-template-rows: auto auto; align-items: center;padding: 2%; row-gap: 5%;">
+        <div class="bootam" style="display: grid; height: 32%; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; grid-template-rows: auto auto; align-items: center;padding: 2%; row-gap: 5%;">
             <button onclick="press(`0`)" class="item" style="background-color: rgb(221, 2, 255);">0</button>
             <button onclick="press(`1`)" class="item" style="background-color: rgb(94, 228, 92);">1</button>
             <button onclick="press(`2`)" class="item" style="background-color: rgb(91, 171, 236);">2</button>
