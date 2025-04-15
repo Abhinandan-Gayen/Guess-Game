@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .size{
+            height: 70vh;
+            width: 30vw;
+            background-color: rgb(0, 255, 191);
+            border-radius: 20px;
+            border: 2px solid black;
+            margin: auto;
+            margin-top: 7%;
+            position: relative;
+        }
+        .item{
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: xxx-large;
+            margin: auto;
+            box-shadow: 2px 2px 10px #000;
+        }
+        .win{
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 18px;
+            text-align: center;
+            font-size: 120px;
+            color: white;
+            padding-top: 35%;
+            visibility: hidden;
+            transition: 0.5s ease all;    
+        }
+        .input1::placeholder{
+            font-size: medium;
+            color: #000;
+        }
+        .reload:hover{
+            transform: scale(1.09);
+        }
+        .ClickMe:hover{
+            background: rgb(204, 0, 255);
+        }
+        .ClickMe{
+            cursor: pointer;
+            margin: auto; 
+            display: block; 
+            height: 40px; 
+            width: 100px; 
+            border-radius: 10px; 
+            background-color: orange; 
+            font-size: 15px; 
+            border: none;
+        }
+        @media screen and (max-width: 480px) {
+            .size{
+                width: 95vw;
+                height: 60vh;
+                margin-top: 30%;
+            }
+        }
+        @media screen and (max-width: 768px){
+            .size{
+                width: 85vw;
+                margin-top: 20%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="size">
+        <div id="WinLoss" class="win">
+            <p id="print"></p>
+            <button class="reload" onclick="reload()" style="margin: auto; margin-top: 10%; display: block; height: 90px; width: 90px; border-radius: 8px; background: url(https://cdn-icons-png.flaticon.com/512/9729/9729098.png); background-size: cover; border: none;" ></button>
+        </div>
+        <h1 style="display: block; text-align: center; border-bottom: 2px solid black; padding: 2%;">Guess The Number Game</h1>
+        <div style="display: flex; justify-content: space-around; padding: 1%; margin-top: 2%; margin-bottom: 2%">
+            <p style="display: inline-block; font-size: 25px;">Your Guess</p>
+            <p style="display: inline-block; font-size: 25px;">Computer Guess</p>
+        </div>
+        <div style="display: flex; margin-bottom: 2%;">
+            <input id="invalue" class="input1" type="text" style="height: 8%; width: 45%;margin: auto; outline: none; font-size: 30px;text-align: center; border-top-right-radius: 15px; border-bottom-left-radius: 15px;" placeholder="Write Number 1-10">
+            <p id="ShowMe" style="background-color: white; height: 35px; width: 45%;margin: auto; outline: none; font-size: 30px;text-align: center;border-top-right-radius: 15px; border-bottom-left-radius: 15px; border: 2px solid black;"></p>
+        </div>
+        <div class="" style="display: grid; height: 35%; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; grid-template-rows: auto auto; align-items: center;padding: 2%; row-gap: 5%;">
+            <button onclick="press(`0`)" class="item" style="background-color: rgb(221, 2, 255);">0</button>
+            <button onclick="press(`1`)" class="item" style="background-color: rgb(94, 228, 92);">1</button>
+            <button onclick="press(`2`)" class="item" style="background-color: rgb(91, 171, 236);">2</button>
+            <button onclick="press(`3`)" class="item" style="background-color: white;">3</button>
+            <button onclick="press(`4`)" class="item" style="background-color: white;">4</button>
+            <button onclick="press(`5`)" class="item" style="background-color: white;">5</button>
+            <button onclick="press(`6`)" class="item" style="background-color: white;">6</button>
+            <button onclick="press(`7`)" class="item" style="background-color: white;">7</button>
+            <button onclick="press(`8`)" class="item" style="background-color: white;">8</button>
+            <button onclick="press(`9`)" class="item" style="background-color: white;">9</button>
+        </div>
+        <button class="ClickMe" onclick="ClickMe()" style="" type="submit">Guess Me</button>
+        <div style="height: 1.5px; width: 100%; background-color: #000; margin: 2% 0 2% 0"></div>
+        <h3 style="display: block; text-align: center;">How To Play Game</h3>
+        <p style="padding: 2%; font-size: 18px;">At first choose the Number 0 to 10. Then compuer give a number. If both number is equal then you win the game, otherwise you loss the game.</p>
+    </div>
+    <script>
+        function press(value){
+           let store = value;
+           store = Number(store);
+           document.getElementById("invalue").value += store;
+        }
+        function ClickMe() {
+            let a = document.getElementById("invalue").value.trim();
+                a = Number(a);
+            if(a == ""){
+                alert("please enter the number")
+            }else if (isNaN(a)) {
+                alert("Please enter only digits");
+            } else if (a > 10) {
+                alert("Invalid number... Please enter a digit between 0 and 10");
+            } else {
+                let b = Math.floor(Math.random() * 10);
+                document.getElementById("ShowMe").innerHTML = b;
+                if(a == b){
+                    document.getElementById("print").innerHTML = "Win";
+                    document.getElementById("WinLoss").style.visibility = "visible";
+                }
+                else{
+                    document.getElementById("print").innerHTML = "Loss";
+                    document.getElementById("WinLoss").style.visibility = "visible";
+                }
+            }
+        }
+        function reload(){
+            location.reload()
+        }
+
+        
+    </script>
+</body>
+</html>
